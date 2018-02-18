@@ -1,5 +1,5 @@
 let blobs;
-const numberOfBlobs = 3;
+const numberOfBlobs = 5;
 
 function setup() {
   createCanvas(400, 200);
@@ -31,7 +31,7 @@ function draw() {
 
   blobs.forEach(blob => {
     blob.update();
-    blob.show();
+    //blob.show();
   });
 
   function manipulation() {
