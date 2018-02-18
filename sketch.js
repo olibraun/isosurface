@@ -2,7 +2,7 @@ let blobs;
 const numberOfBlobs = 2;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 200);
   pixelDensity(1);
   blobs = [];
   for(let i=0; i<numberOfBlobs; i++) {
@@ -35,7 +35,7 @@ function draw() {
 
   function manipulation() {
     for (let y = 0; y < height; y++) {
-      for (let x = 0; x < height; x++) {
+      for (let x = 0; x < width; x++) {
         const index = 4 * (x + y * width);
         let col = 0;
         blobs.forEach(blob => {
@@ -53,13 +53,14 @@ function draw() {
 
 class Blob {
   constructor(x, y) {
-    this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D().mult(random(2, 5));
+    this.pos = {x: x, y: y};
+    this.vel = {x: random(2,5), y: random(2,5)};
     this.r = 30;
   }
 
   update() {
-    this.pos.add(this.vel);
+    this.pos.x += this.vel.x;
+    this.pos.y += this.vel.y;
     if(this.pos.x > width || this.pos.x < 0) {
       this.vel.x *= -1;
     }
