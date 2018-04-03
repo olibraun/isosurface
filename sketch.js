@@ -29,9 +29,11 @@ function manipulation() {
       blobs.forEach(blob => {
         const xdif = x-blob.pos.x;
         const ydif = y-blob.pos.y;
-        const d = sqrt(xdif*xdif + ydif*ydif);
-        col += 150 * blob.r / d;
+        const d = xdif*xdif + ydif*ydif;
+        const r = blob.r;
+        col += (r*r) / d;
       });
+      col *= 150;
       set(x,y,color(col,255,255));
     }
   }
